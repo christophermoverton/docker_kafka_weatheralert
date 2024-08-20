@@ -38,15 +38,35 @@ This part of the project sets up a Kafka broker to manage real-time streaming of
 
 2. Ensure Docker and Docker Compose are installed and running.
 
-3. Make sure your Kafka and Zookeeper services are set up and ready to use. You can use Docker Compose to start both services:
+3. Create a Docker Network
+
+You can create a Docker network using the following command:
+
+```bash
+docker network create kafka-network
+```
+
+This creates a custom bridge network named `kafka-network` that allows your Kafka and Zookeeper containers to communicate.
+
+Verify the Network Setup
+
+You can verify that the containers are attached to the `kafka-network` by running the following command:
+
+```bash
+docker network inspect kafka-network
+```
+
+4. Make sure your Kafka and Zookeeper services are set up and ready to use. You can use Docker Compose to start both services:
     ```bash
     docker-compose up -d --build
     ```
 
-4. Copy the environment variables from `.env.example` to `.env` and modify the variables as needed:
+5. Copy the environment variables from `.env.example` to `.env` and modify the variables as needed:
     ```bash
     cp .env.example .env
     ```
+
+
 
 ## Running the Kafka Broker
 
