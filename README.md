@@ -115,6 +115,7 @@ To consume messages from the `weather-alerts` topic, you can use the Kafka conso
 1. Open a new terminal session.
 2. Run the following command:
     ```bash
+    docker exec -it weather-alert-kafka-1 /bin/bash
     cd opt/bitnami/kafka/bin
     kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic weather-alerts --from-beginning
     ```
