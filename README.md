@@ -83,6 +83,7 @@ This will start Zookeeper and Kafka containers. Kafka will be exposed on port `9
 The producer script fetches data from the weather alerts API and sends it to the Kafka topic `weather-alerts`.
 
 ### Running the Producer Inside the Container
+Note: These are instructions for manually running the producer script.  This is already automated once the docker container is built and running.
 
 1. Connect to the running Kafka container:
     ```bash
@@ -101,6 +102,7 @@ The script will continuously poll the weather API for active alerts and send the
 If you prefer running the producer locally, ensure you have access to Kafka and Zookeeper. Then run:
 
 ```bash
+cd opt
 bash weather_producer.sh
 ```
 
@@ -113,6 +115,7 @@ To consume messages from the `weather-alerts` topic, you can use the Kafka conso
 1. Open a new terminal session.
 2. Run the following command:
     ```bash
+    cd opt/bitnami/kafka/bin
     kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic weather-alerts --from-beginning
     ```
 
