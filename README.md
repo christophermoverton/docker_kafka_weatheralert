@@ -40,7 +40,7 @@ This part of the project sets up a Kafka broker to manage real-time streaming of
 
 3. Make sure your Kafka and Zookeeper services are set up and ready to use. You can use Docker Compose to start both services:
     ```bash
-    docker-compose up -d
+    docker-compose up -d --build
     ```
 
 4. Copy the environment variables from `.env.example` to `.env` and modify the variables as needed:
@@ -53,7 +53,7 @@ This part of the project sets up a Kafka broker to manage real-time streaming of
 To run the Kafka broker and Zookeeper services, simply use Docker Compose:
 
 ```bash
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 This will start Zookeeper and Kafka containers. Kafka will be exposed on port `9092`.
