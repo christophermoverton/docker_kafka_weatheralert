@@ -9,9 +9,11 @@ while true; do
     ALERTS=$(curl -s $WEATHER_API | jq -c '.features[]')
 
     # Loop through each alert and send to Kafka
-    for ALERT in $ALERTS; do
-        echo $ALERT | kafka-console-producer.sh --broker-list localhost:9092 --topic $KAFKA_TOPIC
-    done
+    while IFS= read -r ALERT; do
+        # Send the alert to Kafka after removing newlines
+        CLEAN_ALERT=$(echo "$ALERT" | tr -d '\n' | tr -d '\r')
+        echo "$CLEAN_ALERT" | kafka-console-producer.sh --broker-list localhost:9092 --topic $KAFKA_TOPIC
+    done <<< "$ALERTS"
 
     # Sleep for a minute before fetching new data
     sleep 60
